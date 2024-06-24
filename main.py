@@ -1,10 +1,14 @@
 import requests
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 def recipe_search(ingredient, health=None):
     # Register to get an APP ID and key https://developer.edamam.com/
-    app_id = '43b6438f'
-    app_key = '802138205f7c348afc9651ad0e032a1d'
+    app_id = os.getenv('APP_ID')
+    app_key = os.getenv('APP_KEY')
+
     url = f'https://api.edamam.com/search?q={ingredient}&app_id={app_id}&app_key={app_key}'
 
     if health:
